@@ -7,6 +7,7 @@ export default function Hero({ children, hero }) {
   );
 }
 
+// default if no prop specified for hero
 Hero.defaultProps = {
   hero: "defaultHero",
 };

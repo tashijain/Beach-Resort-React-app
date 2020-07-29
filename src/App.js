@@ -8,11 +8,14 @@ import Error from "./pages/Error";
 
 import { Route, Switch } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
     <>
       {/* switch renders the first route that matches/includes the path 
       a route with no path always matches so Error is default page shown*/}
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/rooms/" component={Rooms} />

@@ -7,8 +7,8 @@ import Title from "./Title";
 
 // function that gets unique values for room type since there
 // are manyy single, double rooms but show option only once
+// sets don't contain duplicate
 const getUnique = (items, value) => {
-  // sets don't contain duplicate
   return [...new Set(items.map((item) => item[value]))];
 };
 
@@ -38,6 +38,7 @@ export default function RoomFilter({ rooms }) {
       </option>
     );
   });
+  // could hardcode but data can chnage anytime
   let people = getUnique(rooms, "capacity");
   people = people.map((item, index) => {
     return (
@@ -46,12 +47,11 @@ export default function RoomFilter({ rooms }) {
       </option>
     );
   });
+  // the name property in all inputs should match (context.js) state prop names
   return (
-    // the name property in all inputs should match (context.js) state prop names
     <section className="filter-container">
       <Title title="search room" />
       <form className="filter-form">
-        {/* select type */}
         <div className="form-group">
           <label htmlFor="type">room type</label>
           <select
@@ -61,14 +61,10 @@ export default function RoomFilter({ rooms }) {
             className="form-control"
             onChange={handleChange}
           >
-            {/* could hard-code it but data can change any time */}
-            {/* <option value="single" >single</option> */}
             {types}
           </select>
         </div>
-        {/* end of select type */}
 
-        {/* guests*/}
         <div className="form-group">
           <label htmlFor="capacity">guests</label>
           <select
@@ -78,13 +74,10 @@ export default function RoomFilter({ rooms }) {
             className="form-control"
             onChange={handleChange}
           >
-            {/* could hard-code it but data can change any time */}
-            {/* <option value="single" >single</option> */}
             {people}
           </select>
         </div>
-        {/* end of guests */}
-        {/* room price */}
+
         <div className="form-group">
           <label htmlFor="price">room price ${price}</label>
           <input
@@ -98,8 +91,7 @@ export default function RoomFilter({ rooms }) {
             className="form-control"
           />
         </div>
-        {/* end of room price */}
-        {/* size */}
+
         <div className="form-group">
           <label htmlFor="size">room size</label>
           <div className="size-inputs">
@@ -121,8 +113,7 @@ export default function RoomFilter({ rooms }) {
             />
           </div>
         </div>
-        {/* end of size */}
-        {/* extras */}
+
         <div className="form-group">
           <div className="single-extra">
             <input
@@ -145,7 +136,6 @@ export default function RoomFilter({ rooms }) {
             <label htmlFor="pets">pets</label>
           </div>
         </div>
-        {/*end of  extras */}
       </form>
     </section>
   );

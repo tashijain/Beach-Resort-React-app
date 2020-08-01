@@ -5,12 +5,11 @@ import Services from "../components/Services";
 import FeaturedRooms from "../components/FeaturedRooms";
 import { Link } from "react-router-dom";
 
+// React.Fragment since multiple components to be placed
 export default function Home() {
   return (
-    // React.Fragment since multiple components to be placed
     <>
       <Hero>
-        {/* children */}
         <Banner
           title="luxurious rooms"
           subtitle="Deluxe rooms starting at $299"

@@ -10,16 +10,17 @@ import { Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
+// slug is a route parameter
+// switch renders the first route that matches/includes the path
+// a route with no path always matches so Error is default page shown
 function App() {
   return (
     <>
-      {/* switch renders the first route that matches/includes the path 
-      a route with no path always matches so Error is default page shown*/}
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/rooms/" component={Rooms} />
-        {/* slug is a route parameter */}
+
         <Route exact path="/rooms/:slug" component={SingleRoom} />
         <Route component={Error} />
       </Switch>

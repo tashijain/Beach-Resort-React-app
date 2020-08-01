@@ -1,10 +1,10 @@
 import React from "react";
 
+// div is for the underline
 export default function Banner({ children, title, subtitle }) {
   return (
     <div className="banner">
       <h1>{title}</h1>
-      {/* div is for the underline */}
       <div></div>
       <p>{subtitle}</p>
       {children}

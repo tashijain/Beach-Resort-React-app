@@ -1,7 +1,7 @@
 import React from "react";
 import RoomFilter from "./RoomFilter";
 import RoomList from "./RoomList";
-import { withRoomConsumer, RoomConsumer } from "../Context";
+import { withRoomConsumer } from "../Context";
 import Loading from "./Loading";
 
 // if we want to use RoomConsumer many times in our application best to use a higher order function

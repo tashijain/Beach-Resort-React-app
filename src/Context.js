@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import items from "./data";
+// import items from "./data";
+import Client from "./Contentful";
 
 // Context API: Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 const RoomContext = React.createContext();
@@ -27,23 +28,48 @@ class RoomProvider extends Component {
     pets: false,
   };
 
-  //getData
+  //get Data from contentful
+  getData = async () => {
+    try {
+      let response = await Client.getEntries({
+        // which speciifc data we're looking for
+        content_type: "beachResort",
+        order: "sys.createdAt",
+      });
+      let rooms = this.formatData(response.items);
+      let featuredRooms = rooms.filter((room) => room.featured === true);
+      let maxPrice = Math.max(...rooms.map((item) => item.price));
+      let maxSize = Math.max(...rooms.map((item) => item.size));
+      this.setState({
+        rooms,
+        featuredRooms,
+        sortedRooms: rooms,
+        loading: false,
+        price: maxPrice,
+        maxPrice,
+        maxSize,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // lifecycle method
   componentDidMount() {
-    let rooms = this.formatData(items);
-    let featuredRooms = rooms.filter((room) => room.featured === true);
-    let maxPrice = Math.max(...rooms.map((item) => item.price));
-    let maxSize = Math.max(...rooms.map((item) => item.size));
-    this.setState({
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
-      price: maxPrice,
-      maxPrice,
-      maxSize,
-    });
+    this.getData();
+    // let rooms = this.formatData(items);
+    // let featuredRooms = rooms.filter((room) => room.featured === true);
+    // let maxPrice = Math.max(...rooms.map((item) => item.price));
+    // let maxSize = Math.max(...rooms.map((item) => item.size));
+    // this.setState({
+    //   rooms,
+    //   featuredRooms,
+    //   sortedRooms: rooms,
+    //   loading: false,
+    //   price: maxPrice,
+    //   maxPrice,
+    //   maxSize,
+    // });
   }
 
   formatData(items) {

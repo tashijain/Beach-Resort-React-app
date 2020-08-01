@@ -4,7 +4,7 @@ import defaultImg from "../images/room-1.jpeg";
 // incase img doesn't load then default image setup
 const StyledHero = styled.header`
   min-height: 60vh;
-  background: url(${(props) => (props.img ? props.img : defaultImg)})
+  background: url(${(props) => (props.img ? props.img : defaultImg)});
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,8 +1,27 @@
-## Todo
+# Hotel Reservation - Beach resort Website
 
-Add a carousel for the images displayed in each single room
+Check it out at https://beach-resort-reservation-react.netlify.app/
 
-- used contentful which is a headless CMS or BYOF- bring your own front end
-- regardless of type of application we can consume data
+## Features
 
-- content model : the blue print of all the data we would be adding
+- React router for routing, React context API for state management, Contentful headless CMS(Contentful) for data management, and Netlify to host the application.
+- Filtering rooms based on user's search criteria with filters for room type, number of guests, room price, room size, breakfast included, and pets allowed
+- Responsive website design
+- Appropriate error page
+- Navigation to each room for details
+
+### Tech Stack
+
+- React, React Hook, React Context API, CSS, JavaScript
+
+### Home Page
+
+![Home Page](homepage.png)
+
+### Our Rooms Page
+
+![Our Rooms Page](roomspage.png)
+
+### Single room Page(One example)
+
+![Single Room Page](singleroom.png)
